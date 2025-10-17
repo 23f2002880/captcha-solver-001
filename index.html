@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Solver - AI-Powered OCR Solution</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 CAPTCHA Solver</h1>
+            <p class="subtitle">AI-Powered Text Recognition</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <div class="captcha-section">
+                    <h2>CAPTCHA Image</h2>
+                    <div class="image-container">
+                        <img id="captchaImage" src="" alt="CAPTCHA Image" />
+                        <div class="loading-spinner" id="loadingSpinner">
+                            <div class="spinner"></div>
+                            <p>Loading CAPTCHA...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <h2>Solved Text</h2>
+                    <div class="result-container">
+                        <div id="processingIndicator" class="processing-indicator">
+                            <div class="spinner"></div>
+                            <p>Processing image...</p>
+                            <p class="timer" id="timer">Time: 0s</p>
+                        </div>
+                        <div id="resultText" class="result-text"></div>
+                        <div id="errorMessage" class="error-message"></div>
+                    </div>
+                    <button id="copyButton" class="copy-button" style="display: none;">
+                        📋 Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>ℹ️ How to Use</h3>
+                <p><strong>Option 1:</strong> Use the default sample by visiting the page directly</p>
+                <p><strong>Option 2:</strong> Pass a custom CAPTCHA URL using the query parameter:</p>
+                <code>?url=https://example.com/captcha.png</code>
+                <p class="note">⚡ The solver processes and displays results within 15 seconds</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by Tesseract.js OCR Engine | <a href="https://github.com/yourusername/captcha-solver-001" target="_blank">View on GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
