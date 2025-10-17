@@ -10,6 +10,8 @@
     const errorMessage = document.getElementById('errorMessage');
     const copyButton = document.getElementById('copyButton');
     const timerElement = document.getElementById('timer');
+    const formatInfo = document.getElementById('formatInfo');
+    const sampleButtons = document.querySelectorAll('.sample-button');
 
     // State
     let startTime;
@@ -26,25 +28,37 @@
 
     function setupEventListeners() {
         copyButton.addEventListener('click', copyToClipboard);
+        
+        // Add event listeners for sample buttons
+        sampleButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const url = this.dataset.url;
+                loadCaptcha(url);
+            });
+        });
     }
 
     function getCaptchaUrl() {
         const urlParams = new URLSearchParams(window.location.search);
         const urlParam = urlParams.get('url');
         
-        // If URL parameter exists, use it; otherwise use default sample
+        // If URL parameter exists, use it; otherwise use default PNG sample
         if (urlParam) {
             return urlParam;
         }
         
-        // Default to sample image in assets
+        // Default to PNG sample image in assets
         return 'assets/round_1/sample.png';
     }
 
     function loadCaptcha(url) {
         loadingSpinner.style.display = 'flex';
         captchaImage.style.display = 'none';
+        formatInfo.textContent = '';
 
+        // Detect image format
+        const format = detectImageFormat(url);
+        
         // Create a new image to test loading
         const img = new Image();
         
@@ -53,6 +67,10 @@
             captchaImage.classList.add('loaded');
             captchaImage.style.display = 'block';
             loadingSpinner.style.display = 'none';
+            
+            // Display format information
+            formatInfo.textContent = `Format: ${format.toUpperCase()}`;
+            formatInfo.className = 'format-info show';
             
             // Start solving the captcha
             solveCaptcha(url);
@@ -64,6 +82,22 @@
         };
 
         img.src = url;
+    }
+
+    function detectImageFormat(url) {
+        const urlLower = url.toLowerCase();
+        if (urlLower.endsWith('.svg')) {
+            return 'svg';
+        } else if (urlLower.endsWith('.png')) {
+            return 'png';
+        } else if (urlLower.endsWith('.jpg') || urlLower.endsWith('.jpeg')) {
+            return 'jpg';
+        } else if (urlLower.endsWith('.gif')) {
+            return 'gif';
+        } else if (urlLower.endsWith('.webp')) {
+            return 'webp';
+        }
+        return 'unknown';
     }
 
     function solveCaptcha(imageUrl) {

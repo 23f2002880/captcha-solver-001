@@ -24,6 +24,7 @@
                             <p>Loading CAPTCHA...</p>
                         </div>
                     </div>
+                    <div class="format-info" id="formatInfo"></div>
                 </div>
 
                 <div class="result-section">
@@ -43,12 +44,30 @@
                 </div>
             </div>
 
+            <div class="samples-card">
+                <h3>📋 Default Samples</h3>
+                <div class="samples-grid">
+                    <div class="sample-item">
+                        <img src="assets/round_1/sample.png" alt="PNG Sample" class="sample-thumb" />
+                        <p class="sample-label">PNG Format</p>
+                        <button class="sample-button" data-url="assets/round_1/sample.png">Load PNG Sample</button>
+                    </div>
+                    <div class="sample-item">
+                        <img src="assets/round_2/sample.svg" alt="SVG Sample" class="sample-thumb" />
+                        <p class="sample-label">SVG Format</p>
+                        <button class="sample-button" data-url="assets/round_2/sample.svg">Load SVG Sample</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="info-card">
                 <h3>ℹ️ How to Use</h3>
-                <p><strong>Option 1:</strong> Use the default sample by visiting the page directly</p>
+                <p><strong>Option 1:</strong> Use the default samples (PNG or SVG) by clicking the buttons above</p>
                 <p><strong>Option 2:</strong> Pass a custom CAPTCHA URL using the query parameter:</p>
                 <code>?url=https://example.com/captcha.png</code>
+                <code>?url=https://example.com/captcha.svg</code>
                 <p class="note">⚡ The solver processes and displays results within 15 seconds</p>
+                <p class="note">✨ Supports both PNG and SVG image formats</p>
             </div>
         </main>
 

@@ -215,6 +215,93 @@ header h1 {
     box-shadow: 0 5px 20px var(--shadow);
 }
 
+.samples-card {
+    background: var(--surface);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 20px var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.samples-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.samples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.sample-item {
+    background: var(--background);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.sample-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.sample-thumb {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    max-height: 150px;
+    object-fit: contain;
+}
+
+.sample-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.sample-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.sample-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+}
+
+.sample-button:active {
+    transform: translateY(0);
+}
+
+.format-info {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.format-info.show {
+    opacity: 1;
+}
+
 .info-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
@@ -271,12 +358,17 @@ footer a:hover {
     }
 
     .card,
-    .info-card {
+    .info-card,
+    .samples-card {
         padding: 1.5rem;
     }
 
     .result-text {
         font-size: 1.5rem;
         letter-spacing: 0.2rem;
+    }
+
+    .samples-grid {
+        grid-template-columns: 1fr;
     }
 }
